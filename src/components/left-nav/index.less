@@ -1,0 +1,55 @@
+@import '../../less/common.less';
+.component-left-nav {
+    height: 100%;
+    width: 140px;
+    min-width: 140px;
+    background-color: #0f2950;
+    overflow: auto;
+    transition: all 0.3s;
+    &.closed {
+        width: 80px;
+    }
+    .closed {
+        height: 55px;
+        line-height: 55px;
+        padding-left: 20px;
+        padding-right: 20px;
+        .iconfont {
+            font-size: 20px;
+            color: #fff;
+            
+        }
+    }
+    .nav-content {
+        .ant-menu {
+            // background-color: @normal-bg-color;
+            color: @normal-color;
+            font-size: 15px;
+            .iconfont {
+                margin-right: 10px;
+                font-size: 20px;
+                vertical-align: middle;
+            }
+            .ant-menu-item {
+                padding-left: 20px;
+                margin-top: 0;
+                margin-bottom: 0;
+                height: 50px;
+                line-height: 50px;
+                background-color: @normal-bg-color;
+                &.ant-menu-item-selected {
+                    background-color: #199ed8;
+                    color: #fff;
+                }
+                // &.ant-menu-item-active {
+                    // color: 
+                // }
+            }
+            .ant-menu-item:not(:last-child) {
+                margin-bottom:0;
+
+            }
+        }
+    }
+}
+
