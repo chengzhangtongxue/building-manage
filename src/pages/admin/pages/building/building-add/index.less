@@ -1,0 +1,38 @@
+@import '~@/less/common.less';
+.building-add {
+    .row-no-border {
+        &.ant-card-bordered {
+            border:0;
+        }
+        .ant-card-bordered {
+            border: 0;
+        }
+    }
+    .btns {
+        display: flex;
+        justify-content: flex-end;
+    }
+    h2 {
+        color: @font-color;
+        padding-left: 10px;
+        border-left: 4px solid @font-color-active;
+    }
+    .page-nav {
+        width: 180px;
+        cursor: pointer;
+        li {
+            height: 40px;
+            line-height: 40px;
+            list-style: none;
+            text-align:right;
+            padding-right:10px;
+            &:hover {
+                background-color: rgba(242, 242, 242, 1);
+                color: @font-color;
+            }
+            &:selected {
+                background-color: rgba(242, 242, 242, 1);
+            }
+        }
+    }
+}

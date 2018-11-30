@@ -3,6 +3,7 @@ import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 import App from './App.jsx';
 import Login from './pages/login';
 import Admin from './pages/admin';
+// import 'antd/dist/antd.css';
 
 class MRouter extends Component {
     state = {

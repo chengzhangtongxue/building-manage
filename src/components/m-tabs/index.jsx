@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './index.less';
 
-import { Menu, Icon, Tabs } from 'antd';
+import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
 
 class MTabs extends Component {

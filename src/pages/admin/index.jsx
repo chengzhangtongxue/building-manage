@@ -1,34 +1,40 @@
 import React, { Component } from 'react';
 import './index.less';
-
+import { getCookie } from '@/util';
 import LeftNav from '../../components/left-nav';
 import MHeader from '../../components/m-header';
-import BulidingInfo from './pages/building-info';
-import BulidingList from './pages/building-list';
-import RouterContent from './router-content';
+import AdminRouter from './admin-router';
 import SecondNav from '../../components/second-nav';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+// import { HashRouter, Route, Switch } from 'react-router-dom';
 
 class Admin extends Component {
+    componentWillMount() {
+        const isLogin = getCookie('isLogin');
+        if(!isLogin) {
+            this.props.history.push('/login');
+        }
+    }
     componentDidMount() {
     }
     render() {
         return (
-            <div className="app">
+            <div className="admin">
                 <LeftNav></LeftNav>
                 <div className="layout-main">
                     <MHeader></MHeader>
                     <div className="layout-content">
                         <SecondNav></SecondNav>
-                        <HashRouter>
+                        <AdminRouter></AdminRouter>
+                        {/* <HashRouter>
                             <RouterContent>
                                 <Switch>
                                     <Route path="/admin/building-info" component={BulidingInfo}></Route>
                                     <Route path="/admin/buliding-list" component={BulidingList}></Route>
+                                    <Route path="/admin/buliding-add" component={BulidingAdd}></Route>
                                     <Route path="/admin" component={BulidingInfo}></Route>
                                 </Switch>
                             </RouterContent>
-                        </HashRouter>
+                        </HashRouter> */}
                     </div>
                     
                 </div>

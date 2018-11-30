@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import './index.less';
 
-import { Menu, Icon } from 'antd';
+import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
 
 class SecondNav extends Component {
+    state = {
+        
+    }
     render() {
         return (
             <div className="second-nav">
                 <Menu mode="inline">
                     <Menu.SubMenu key="sub1" title={'楼宇'}>
                         <Menu.Item key="1">
-                            <Link to="/admin/building-info">楼宇基本信息</Link>
+                            <Link to="/admin/building-list">楼宇信息</Link>
                         </Menu.Item>
                         <Menu.Item key="2">
-                            <Link to="/admin/buliding-list">楼宇列表与窗口</Link>
+                            <Link to="/admin/building-list-window">楼宇列表与窗口</Link>
                         </Menu.Item>
                     </Menu.SubMenu>
                     <Menu.SubMenu key="sub2" title={'招租'}>

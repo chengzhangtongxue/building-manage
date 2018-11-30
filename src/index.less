@@ -1,1 +1,27 @@
 @import './font/iconfont.css';
+
+@import './less/common.less';
+body {
+    color: @font-color;
+    font-family: 'Microsoft Yahei, Arial, Helvetica, Sans-Serif';
+    .ant-menu {
+        border: 0;
+    }
+    .ant-menu-inline .ant-menu-item, .ant-menu-inline .ant-menu-submenu-title {
+        width: 100%;
+    }
+    .ant-menu-inline .ant-menu-selected:after, .ant-menu-inline .ant-menu-item-selected:after {
+        border-right:0px;
+        content: none;
+    }
+
+}
+
+.clearfix {
+    &:after {
+        content: ' ';
+        visibility: hidden;
+        display: block;
+        clear:both;
+    }
+}

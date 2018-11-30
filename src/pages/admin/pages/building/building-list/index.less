@@ -1,0 +1,42 @@
+@import '~@/less/common.less';
+
+.building-list {
+    
+    .list-handle {
+        height: 60px;
+        border-bottom: 2px solid @font-color-active;
+        clear: both;
+        overflow: hidden;
+        .my-building {
+            cursor: pointer;
+            float: left;
+            height: 60px;
+            width: 120px;
+            line-height: 60px;
+            font-size: 18px;
+            color: @font-color;
+            padding-left: 20px;
+            .down-icon {
+                font-size: 12px;
+                margin-left: 5px;
+            }
+            
+        }
+        .right-handle {
+            cursor: pointer;
+            float: right;
+            height: 60px;
+            line-height: 60px;
+            display: flex;
+            .ant-btn-primary {
+                margin-top: 14px;
+            }
+            .handle {
+                margin: 0 20px;
+                span {
+                    margin: 0 6px;
+                }
+            }
+        }
+    }
+}

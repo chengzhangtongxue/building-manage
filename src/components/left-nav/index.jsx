@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './index.less';
 
 import { Menu } from 'antd';
-import { Link } from 'react-router-dom';
 
 class LeftNav extends Component {
     constructor(props) {
@@ -17,11 +16,19 @@ class LeftNav extends Component {
     onItemSelect = (type) => {
         
     }
+    // 收起菜单
+    pickupMenu = () => {
+        this.setState({
+            closed: !this.state.closed
+        });
+    }
     render() {
+        let { closed } = this.state;
+
         return (
-            <div className="component-left-nav">
-                <div className="closed">
-                    <i className="iconfont icon-caidananniu"></i>
+            <div className={ `component-left-nav ${closed ? 'closed' :''}` }>
+                <div className="closed" >
+                    <i className="iconfont icon-caidananniu" onClick={ () => { this.pickupMenu() }}></i>
                 </div>
                 <div className="nav-content">
                     <Menu mode="inline">
@@ -42,6 +49,13 @@ class LeftNav extends Component {
                             <span>系统设置</span>
                         </Menu.Item>
                     </Menu>
+                </div>
+                <div className="manage-use clearfix">
+                    <div className="icon"></div>
+                    <div className="info">
+                        <div className="name">李成章</div>
+                        <div className="company">南京松花有限公司</div>
+                    </div>
                 </div>
             </div>
         );
