@@ -340,6 +340,8 @@ module.exports = {
                 modifyVars: {
                   // '@primary-color':'#199ed8',
                   '@btn-primary-bg':'#199ed8', 
+                  '@link-color': '#199ed8',
+                  '@link-hover-color':'#199ed8',
                 }
               }
             )

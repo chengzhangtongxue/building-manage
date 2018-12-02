@@ -1,0 +1,37 @@
+@import '../../less/common.less';
+
+.component-m-table {
+    .ant-table-thead > tr {
+        font-size: 14px;
+        color: #475059;
+        .right-setting {
+            color: @icon-color;
+            &:hover {
+                color: @normal-base;
+            }
+        }
+    }
+    .ant-table-thead > tr > th  {
+        border-right: 1px solid #e6f1fc;
+        color: #475059;
+        border-bottom: 1px solid #d8e3ef;
+        &:last-child {
+            border-right:0;
+        }
+    }
+    .ant-table-tbody {
+        .ant-table-row:nth-child(2n){
+            background-color: #f7f8fa;
+        }
+    }
+    .ant-table-tbody > tr > td {
+        border-bottom:0;
+        padding: 9px 16px;
+    }
+    .ant-pagination {
+        margin-right: 20px;
+    }
+    .ant-table-scroll .ant-table-body {
+        // height: calc( ~'100vh - 240px' );
+    }
+}

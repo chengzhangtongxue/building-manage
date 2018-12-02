@@ -15,7 +15,7 @@ let _mAxios = {
             axios({
                 url: option.url,
                 method: option.type,
-                baseURL: 'http://w22h582907.iask.in:26347',
+                // baseURL: 'http://w22h582907.iask.in:26347',
                 // headers: {'X-Requested-With': 'XMLHttpRequest'},
                 params: option.data,
                 timeout: 3000

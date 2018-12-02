@@ -418,7 +418,17 @@ module.exports = {
                 importLoaders: 2 ,
                 sourceMap: shouldUseSourceMap,
               }, 
-              'less-loader'
+              'less-loader',
+              {
+                modules: false,
+                modifyVars: {
+                  // '@primary-color':'#199ed8',
+                  '@btn-primary-bg':'#199ed8', 
+                  '@link-color': '#199ed8',
+                  '@link-hover-color':'#199ed8',
+                  // '@background-color-light' : '#199ed8'
+                }
+              }
             )
           },
           // 自定义修改 end
