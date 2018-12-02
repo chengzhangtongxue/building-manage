@@ -17,3 +17,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     react-router-dom
     axios
     antd
+
+## 记录
+
+    2018-12-02
+    修改 antd 的表格，建立了模块化，也发现了一个 antd 的bug，固定列的时候，如果列数很少，固定的列会遮不住表格中应有的列,如下图：
+
+![blockchain](./readme/table-error.jpg)
