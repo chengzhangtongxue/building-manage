@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Base from '../../base';
 import './index.less';
 import { Row, Col, Form, Input, Card, Select, Upload, Icon, Button, Anchor } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const { Link } = Anchor;
@@ -61,7 +62,8 @@ class BuildingAddForm extends Base {
                         </Col>
                     </Row>
                 </Card>
-                <Card className="row-no-border">
+                
+                <Card className="row-no-border form-item" style={{ height: 'calc( 100% - 81px)', overflow: 'auto'}}>
                     {/* <Col span={ 4 }> */}
                         {/* <ul className="page-nav">
                             <li><a>基本信息</a></li>
@@ -69,75 +71,313 @@ class BuildingAddForm extends Base {
                             <li>系统信息</li>
                         </ul> */}
                     {/* </Col> */}
-                    <Col span={ 16 } offset={ 4 }>
-                        {/* <Card style={{border:0, height: 'calc( 100vh - 200px)', overflow: 'auto'}}> */}
-                            <Row className="row-no-border">
-                                <h2>基本信息</h2>
-                            </Row>
-                            <Row>
-                                <Col span={11} >
-                                    <FormItem
-                                        label="楼宇名称"
-                                        >
-                                        
-                                        <Input placeholder="请输入楼宇名称"></Input>            
-                                    </FormItem>
-                                </Col>
-                                <Col span={11} offset={2}>
-                                    <FormItem label="楼宇图片">
-                                        <Upload
-                                            name="avatar"
-                                            listType="picture-card"
-                                            className="avatar-uploader"
-                                            showUploadList={true}
-                                            action="//jsonplaceholder.typicode.com/posts/"
-                                            // beforeUpload={beforeUpload}
-                                            // onChange={this.handleChange}
-                                        >
-                                            {imageUrl ? <img src={imageUrl} alt="avatar" /> : (
-                                                <div>
-                                                    <Icon type={this.state.loading ? 'loading' : 'plus'} />
-                                                    <div className="ant-upload-text">外立面</div>
-                                                </div>
-                                            )}
-                                        </Upload>
-                                    </FormItem>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    
-                                    
-                                    
-                                    
-                                    <FormItem
-                                        label="楼座"
-                                        >
-                                        <Select
-                                            placeholder="请选择楼座"
-                                            defaultValue="1"
-                                            >
-                                            <Option value="1">1栋</Option>
-                                            <Option value="2">2栋</Option>
-                                        </Select>
-                                    </FormItem>
-                                    <FormItem label="开发公司">
+                    <Row>
+                        <Col offset={4} span={16}>
+                            <h2>基本信息</h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={ 7 } offset={4}>
+                            <FormItem label="楼宇名称">
+                                {
+                                    getFieldDecorator('name',{
+                                        rules: [
+                                            {
+                                                required: true, 
+                                                message: 'Please confirm your password!',
+                                            }
+                                        ]
+                                    })(<Input placeholder="请输入楼宇名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={ 7 } offset={ 2 }>
+                            <FormItem label="楼宇图片">
+                                <Upload
+                                    name="avatar"
+                                    listType="picture-card"
+                                    className="avatar-uploader"
+                                    showUploadList={true}
+                                    action="//jsonplaceholder.typicode.com/posts/"
+                                    // beforeUpload={beforeUpload}
+                                    // onChange={this.handleChange}
+                                >
+                                    {imageUrl ? <img src={imageUrl} alt="avatar" /> : (
+                                        <div>
+                                            <Icon type={this.state.loading ? 'loading' : 'plus'} />
+                                            <div className="ant-upload-text">外立面</div>
+                                        </div>
+                                    )}
+                                </Upload>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={ 7 } offset={4}>
+                            <Row gutter={10}>
+                                <Col span="12">
+                                    <FormItem label="楼座">
                                         {
-                                            getFieldDecorator('companyName',{
+                                            getFieldDecorator('name',{
                                                 rules: [
                                                     {
-                                                        required: true, message: 'Please confirm your password!',
+                                                        required: true, 
                                                     }
                                                 ]
-                                            })(
-                                                <Input placeholder={'请输入公司名称'}></Input>
-                                            )
+                                            })((<Input placeholder="请输入楼座名称"></Input>))
+                                        }
+                                    </FormItem>
+                                </Col>
+                                <Col span="12">
+                                    <FormItem label="楼座">
+                                        {
+                                            getFieldDecorator('name', {
+                                                rules: [
+                                                    { required: true }
+                                                ]
+                                            })(<Select style={{width:'100%'}}>
+                                                <Option value="1">1栋</Option>
+                                                <Option value="2">2栋</Option>
+                                                <Option value="3">3栋</Option>
+                                            </Select>)
                                         }
                                     </FormItem>
                                 </Col>
                             </Row>
-                        {/* </Card> */}
-                    </Col>
+                        </Col>
+                        <Col span={ 7 } offset={2}>
+                            <Row gutter={10}>
+                                <Col span="12">
+                                    <FormItem label="楼座">
+                                        {
+                                            getFieldDecorator('name',{
+                                                required: true
+                                            })((<Input placeholder="请输入楼座名称"></Input>))
+                                        }
+                                    </FormItem>
+                                </Col>
+                                <Col span="12">
+                                    <FormItem label="楼座">
+                                        {
+                                            getFieldDecorator('name', {
+                                                
+                                            })(<Select style={{width:'100%'}}>
+                                                <Option value="1">1栋</Option>
+                                                <Option value="2">2栋</Option>
+                                                <Option value="3">3栋</Option>
+                                            </Select>)
+                                        }
+                                    </FormItem>
+                                </Col>
+                            </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col offset={4} span={16}><h2>附属信息</h2></Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="开发公司">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="物业服务">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="楼宇区位">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="详细地址">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="物业管理费（元/月/m2）">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="公摊水电费（元/月/m2）">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="室内水电费">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="空调类型">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="空调开放时间">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="空调费用（元/月/m2）">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="车位数量（个）">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="车位租金(元/月)">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="电梯品牌">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="电梯数量（台）">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="项目介绍">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<TextArea placeholder="请输入公司名称"></TextArea>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="交通配套">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<TextArea placeholder="请输入公司名称"></TextArea>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="备注">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<TextArea placeholder="请输入公司名称"></TextArea>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col offset={4} span={16}>
+                            <h2>系统信息</h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={7} offset={4}>
+                            <FormItem label="负责人">
+                                {
+                                    getFieldDecorator('company',{
+                                        rules: [
+                                            {
+                                                required: true
+                                            }
+                                        ]
+                                    })(<Select style={{width: '100%'}}>
+                                        <Option value="">请选择</Option>
+                                    </Select>)
+                                }
+                            </FormItem>
+                        </Col>
+                        <Col span={7} offset={2}>
+                            <FormItem label="新增日期">
+                                {
+                                    getFieldDecorator('company',{
+
+                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                }
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    
                 </Card>
             </div>
         );

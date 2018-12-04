@@ -206,7 +206,7 @@ class MTable extends Component {
      * 单行点击
      */
     tRClickHandle = (item) => {
-        console.log(item);
+        this.props.rowClickHandle(item);
     }
     
     componentWillMount() {

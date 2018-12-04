@@ -34,10 +34,86 @@
                 margin-top: 14px;
             }
             .handle {
+                position: relative;
                 margin: 0 20px;
                 span {
                     margin: 0 6px;
                 }
+                
+            }
+        }
+    }
+    .stat-data {
+        overflow: auto;
+        height: calc(~'100vh - 230px');
+        padding: 50px 20px 0;
+        margin-bottom:0;
+        li {
+            margin-bottom:20px;
+            background-color: rgba(247, 248, 250, 1);
+            padding: 20px 10px 20px 30px;
+            display: flex;
+            height: 85px;
+            box-sizing: border-box;
+            .name {
+                position: relative;
+                float: left;
+                width: 10%;
+                min-height: 50px;
+                font-size: 14px;
+                color: #333;
+                padding-right:10px;
+                border-right: 1px solid @border-color;
+                span {
+                    display: block;
+                    width: 100%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .other-info {
+                float: left;
+                width: 90%;
+                .item {
+                    padding-left: 20px;
+                    float:left;
+                    width: 12.5%;
+                    &.more {
+                        width: 16%;
+                    }
+                    &.less {
+                        width: 9%;
+                    }
+                }
+                div.info-name {
+                    font-size: 12px;
+                    color: #8FA1B2;
+                }
+                .info-value {
+                    font-size: 14px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    .footer {
+        height: 50px;
+        line-height: 50px;
+        // background: rgb(71, 71, 99);
+        display: flex;
+        margin-top:10px;
+        .name {
+            font-size: 20px;
+            padding-left: 20px;
+        }
+        .f-item {
+            margin-left: 10px;
+            font-size: 12px;
+            span {
+                font-size: 14px;
+                color: #f00;
             }
         }
     }

@@ -1,6 +1,32 @@
+@import '../../less/common.less';
 .second-nav {
-    width: 195px;
+    position: relative;
+    // width: 195px;
     background-color: #edf0f2;
+    .toggle {
+        position: absolute;
+        z-index:9;
+        top: 46%;
+        right: 0;
+        width: 16px;
+        height: 34px;
+        line-height:17px;
+        background: rgba(0,0,0,0.1);
+        transition: all 0.3s;
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 2px;
+        color: @font-color-active;
+        &.outer {
+            right: -16px;
+        }
+    }
+    .content {
+        width: 195px;
+        // width:100%;
+        overflow:hidden;
+    }
     .ant-menu {
         background-color: #f7f8fa;
         .ant-menu-item {
@@ -9,4 +35,33 @@
             font-size: 14px;
         }
     }
+
+    .fade-enter {
+        width: 0px;
+        overflow:hidden;
+        opacity:0;
+    }
+    .fade-enter-active {
+        width: 195px;
+        opacity:1;
+        transition: all 0.3s;
+    } 
+    .fade-enter-done {
+        width: 195px;
+        opacity:1;
+    }
+    .fade-exit {
+        width: 195px;
+        opacity:1;
+    } 
+    .fade-exit-active {
+        width: 0px;
+        transition: all 0.3s;
+        opacity:0;
+    } 
+    .fade-exit-done {
+        width: 0px;
+        opacity:0;
+    }
 }
+
