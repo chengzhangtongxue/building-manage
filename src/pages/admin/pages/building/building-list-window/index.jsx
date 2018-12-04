@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.less';
 import Base from '../../base';
+import SMyBuilding from '../../../../../components/s-my-building';
 import { Divider, Icon, Row, Col, Button } from 'antd';
 
 class BuildingListWindow extends Base {
@@ -13,7 +14,11 @@ class BuildingListWindow extends Base {
                             <Icon type="appstore" theme="filled" />
                             <Icon type="appstore" theme="filled" />
                             <Divider type="vertical" />
-                            <Button style={{border:0,boxShadow:'none'}}>我的楼宇<Icon type="down"/></Button>
+                            {/* <div className="my-building" onClick={ this.toggleFilter }>
+                                <span>我的楼宇</span>
+                                <Icon type="down" className="down-icon"></Icon>
+                            </div> */}
+                            <SMyBuilding></SMyBuilding>
                         </Col>
                         <Col span={16}></Col>
                         <Col span={4}>
