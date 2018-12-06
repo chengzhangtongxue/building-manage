@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Base from '../../base';
 import './index.less';
-import { Row, Col, Form, Input, Card, Select, Upload, Icon, Button, Anchor } from 'antd';
+import { Row, Col, Form, Input, Card, Select, Upload, Icon, Button } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 const FormItem = Form.Item;
 const Option = Select.Option;
-const { Link } = Anchor;
 
 class BuildingAddForm extends Base {
     state = {

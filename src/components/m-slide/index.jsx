@@ -23,8 +23,6 @@ class MSlide extends React.Component {
         console.log('on')
         this.setState({
             visible: false
-        }, function() {
-            console.log('关闭了');
         });
     }
     render() {

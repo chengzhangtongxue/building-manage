@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import './index.less';
 import { Table, Icon, Button, Divider, Transfer } from 'antd';
-import { in_building_list } from '@/url';
-import { mAxios } from '@/util';
+import { in_building_list } from '../../../../../url';
+import { mAxios } from '../../../../../util';
 import Base from '../../base';
-import MSlide from '@/components/m-slide/index.jsx';
-import MCheck from '@/components/m-check';
-import MTable from '@/components/m-table';
-import MoreHandle from '@/components/more-handle';
+import MSlide from '../../../../../components/m-slide/index.jsx';
+import MCheck from '../../../../../components/m-check';
+import MTable from '../../../../../components/m-table';
+// import MoreHandle from '../../../../../components/';
 import BuildingDetail from '../building-detail';
+import SMyBuilding from '../../../../../components/s-my-building';
+import SMoreHandle from '../../../../../components/s-more-handle';
+import TableCheckHandle from '../../../../../components/table-checked-handle';
 
 class BuildingList extends Base {
     constructor(props) {
@@ -23,7 +26,11 @@ class BuildingList extends Base {
             // 更多-操作
             moreHandleFlag: false,
             // 详情弹窗出现
-            mSlideVisible: true,
+            mSlideVisible: false,
+            // 表格选中回调标志
+            checkedHandleFlag: false,
+            // 已选择了几行数据
+            checkedHandleTotal: 0,
             columns: [],
             data: [],
         }
@@ -56,10 +63,11 @@ class BuildingList extends Base {
     /**
      * 查看统计和列表
      */
-    toggleListStatistics = () => {
+    toggleListStatistics = (e) => {
         this.setState({
             table: !this.state.table
         });
+        e.preventDefault();
     }
     // 去新增
     addBuilding = () => {
@@ -100,45 +108,43 @@ class BuildingList extends Base {
         console.log(item);
         this.setState({
             mSlideVisible: true
-        }, () => {
-            console.log(this.state.mSlideVisible)
+        });
+    }
+    /**
+     * 表格选中回调
+     */
+    checkedHandle = (selectedRows) => {
+        console.log(2);
+        this.setState({
+            checkedHandleTotal: selectedRows.length,
+            checkedHandleFlag: true,
         });
     }
     render() {
 
         return (
             <div className="building-list">
-                { this.state.filter && <MCheck 
-                                            checkedList={ this.state.checkedList }
-                                            submit={ this.submitFilter }
-                                            close={ this.toggleFilter } 
-                                            style={{left: 20, top: 50}}/> }
                 <div className="list-handle">
-                    <div className="my-building" onClick={ this.toggleFilter }>
-                        <span>我的楼宇</span>
-                        <Icon type="down" className="down-icon"></Icon>
-                    </div>
+                    <SMyBuilding style={{ marginLeft:20,marginTop: 15 }}/>
                     <div className="right-handle">
                         <div className="handle" onClick={ this.toggleListStatistics }>
                             <Icon type="paper-clip" />
                             <span>查看统计</span>
                         </div>
                         <Button type="primary" onClick={this.addBuilding}>新增楼宇</Button>
-                        
-                        <div className="handle" onClick={ () => { this.moreHandle() } }>
-                            <span>更多</span>
-                            <Icon type="down" className="down-icon"></Icon>
-
-                            {
-                                this.state.moreHandleFlag && <MoreHandle _importData={ this.importData } _exportData={ this.exportData }/>
-                            }
-                        </div>
+                        <SMoreHandle style={{ margin: '15px 30px 0px 20px' }}/>
                     </div>
+
+                    <TableCheckHandle 
+                        total={ this.state.checkedHandleTotal }
+                        className={ `${this.state.checkedHandleFlag ? 'active' : ''}` }
+                        close={ () => { this.setState({ selectedHandleFlag: false }) } }
+                        />
                 </div>
                 
 
                 {
-                    this.state.table ? <MTable rowClickHandle={ this.tableRowClickHandle }></MTable> :<ul className="stat-data">
+                    this.state.table ? <MTable checkedHandle={ this.checkedHandle } rowClickHandle={ this.tableRowClickHandle }></MTable> :<ul className="stat-data">
                         {
                             [0,1,2,3,4,5,6,7,8].map(item => {
                                 return <li className="clearfix" key={item}>

@@ -1,0 +1,29 @@
+@import '../../less/common.less';
+.component-m-check2 {
+    width:160px;
+    max-height: 274px;
+    border-radius: 4px;
+    .filter {
+        padding: 0 10px;
+        height: 50px;
+        line-height: 50px;
+    }
+    .check-list {
+        max-height:160px;
+        padding: 0 10px;
+        overflow: auto;
+        .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+            margin:0;
+        }
+    }
+    .btns {
+        margin-top: 10px;
+        border-top: 1px solid @border-color;
+        height: 60px;
+        line-height: 50px;
+        text-align: center;
+        .reset {
+            margin-right: 9px;
+        }
+    }
+}

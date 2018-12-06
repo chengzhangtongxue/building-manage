@@ -1,0 +1,42 @@
+.component-table-checked-more-oper {
+    position: absolute;
+    top: 58px;
+    left:0;
+    width:100%;
+    background-color:#fff;
+    height: 58px;
+    line-height: 58px;
+    font-size: 14px;
+    transition: all 0.3s;
+    &.active {
+        top: 0px;
+    }
+    .selected-num {
+        display: inline-block;
+        height: 58px;
+        margin: 0 10px 0 20px;
+        span {
+            color:#6B8299;
+            margin: 0 2px;
+        }
+    }
+    .oper-btn {
+        height: 58px;
+        margin: 0 10px;
+        display: inline-block;
+        color: #6B8299;
+        cursor: pointer;
+        span {
+            margin-left: 8px;
+        }
+    }
+    .close {
+        position: absolute;
+        right: 20px;
+        top: 0px;
+        height: 58px;
+        font-size:20px;
+        color: #6B8299;
+        cursor: pointer;
+    }
+}

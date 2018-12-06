@@ -1,8 +1,108 @@
 @import '../../../../../less/common.less';
 .building-list-window {
+    height: 100%;
     .window-head {
+        position: relative;
         height: 60px;
         border-bottom: 2px solid @font-color-active;
         clear: both;
+        .h-left {
+            float: left;
+            width: 200px;
+            height: 58px;
+        }
+        .h-center {
+            height: 58px;
+            padding: 0 300px 0 200px;
+            background:yellow;
+        }
+        .h-right {
+            position: absolute;
+            right:0;
+            top:0;
+            text-align: right;
+            float: right;
+            width: 300px;
+            height: 58px;
+            .oper {
+                display: inline-block;
+                cursor: pointer;
+                height: 30px;
+                line-height: 30px;
+                padding: 0 10px;
+                background: blue;
+                font-size: 14px;
+                margin-right: 20px;
+                .icon-oper {
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+    .window-content {
+        height: calc(~'100% - 60px');
+        .floor-list {
+            padding: 0 40px;
+            height: 100%;
+            .floor-head {
+                height: 60px;
+                .h3 {
+                    width: 100px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-top: 15px;
+                    float: left;
+                    font-size: 16px;
+                    color: @font-color-active;
+                    border-left: 5px solid @font-color-active;
+                    padding-left: 10px;
+                }
+                .head-info {
+                    height: 60px;
+                    line-height: 60px;
+                    padding-left: 100px; 
+                    font-size: 12px;
+                    .i-block {
+                        display: inline-block;
+                        margin-right: 10px;
+                        .value {
+                            color: #f00;
+                        }
+                    }
+                }
+            }
+            .floor-con {
+                height: calc(~'100% - 110px');
+                overflow: auto;
+                .floor-con-item {
+                    margin-bottom: 10px;
+                    height: 60px;
+                    .floor-name {
+                        float:left;
+                        width: 100px;
+                        height: 60px;
+                        line-height: 60px;
+                        font-size: 14px;
+                        text-align: right;
+                        padding-right: 20px;
+                    }
+                    .room-distribution {
+                        margin-left: 100px;
+                        overflow: hidden;
+                        color: #fff;
+                        height: 60px;
+                        .h-60 {
+                            height: 60px;
+                        }
+                        .col-con {
+                            width: 100%;
+                            height: 100%;
+                            background-color: @font-color-active;
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
 }

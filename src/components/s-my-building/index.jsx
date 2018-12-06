@@ -1,38 +1,16 @@
 import React, { Component } from 'react';
 import './index.less';
-import { Icon, Popover, Button } from 'antd';
+import MCheck2 from '../m-check2';
+import SBase from '../s-base';
 
 class SMyBuilding extends Component {
-    state = {
-        visible: false,
-      }
-      hide = () => {
-        this.setState({
-          visible: false,
-        });
-      }
-    
-      handleVisibleChange = (visible) => {
-        this.setState({ visible });
-      }
     
     render() {
-        return (
-            <Popover
-                    content={<a onClick={this.hide}>Close</a>}
-                    title="Title"
-                    trigger="click"
-                    visible={this.state.visible}
-                    placement="bottom"
-                    onVisibleChange={this.handleVisibleChange}
-                >
-            <div className="component-my-building">
-                <span>我的楼宇</span>
-                <Icon type="down" className="down-icon"></Icon>
+        let { style, className = '' } = this.props;
+        className += ' component-my-building';
 
-                
-            </div>
-                </Popover>
+        return (
+            <SBase content={ <MCheck2/> } name="我的楼宇" className={ className } style={style}/>
         )
     }
 }

@@ -221,6 +221,7 @@ class MTable extends Component {
             // fixed: 'left',
             onChange: (selectedRowKeys, selectedRows) => {
                 console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+                this.props.checkedHandle(selectedRows);
             },
             // getCheckboxProps: record => {
                 // console.log(record.name === 'Disabled User');

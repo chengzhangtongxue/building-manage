@@ -44,7 +44,7 @@ const defaultState = {
                 {
                     key: 'let1',
                     title: '来访客户信息',
-                    path: '/admin/customer-info'
+                    path: '/admin/visiting-customer-info'
                 },
                 {
                     key: 'let2',
