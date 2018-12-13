@@ -1,0 +1,46 @@
+.component-ui-detail-header {
+    padding: 10px;
+    background-color: #fff;
+    .con {
+        padding: 10px 0;
+    }
+    .header-title {
+        display: inline-block;
+        .img {
+            display: inline-block;
+            width:48px;
+            height: 48px;
+            line-height: 48px;
+            // background: #f60;
+            border-radius: 4px;
+            vertical-align: middle;
+            font-size: 44px;
+        }
+        .title {
+            display: inline-block;
+            margin-bottom:0;
+            vertical-align: middle;
+            margin-left:20px;
+            font-size:24px;
+        }
+    }
+    .btns {
+        float: right;
+        padding-top: 6px;
+        .ant-btn {
+            margin: 0 10px;
+        }
+        .b-refresh, .b-close {
+            position: relative;
+            top: 2px;
+            margin: 0px 10px 0;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 1s;
+            &.active {
+                transform: rotate3d(0,0,1,360deg);
+            }
+        }
+
+    }
+}

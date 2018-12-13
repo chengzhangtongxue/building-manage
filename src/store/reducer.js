@@ -3,7 +3,7 @@ const defaultState = {
     // 办公桌面
     officeDesktop: [
         {
-            key: 'officeDesktop1',
+            key: 'admin',
             title: '办公桌面1',
             children: [
                 {
@@ -22,16 +22,16 @@ const defaultState = {
     // 我的楼宇
     myBuilding: [
         {
-            key: 'officeDesktop1',
+            key: 'admin',
             title: '楼宇',
             children: [
                 {
-                    key: 'building1',
+                    key: 'building-list',
                     title: '楼宇信息',
                     path: '/admin/building-list'
                 },
                 {
-                    key: 'building2',
+                    key: 'building-list-window',
                     title: '楼宇列表与窗口',
                     path: '/admin/building-list-window'
                 }
@@ -60,7 +60,7 @@ const defaultState = {
                 {
                     key: 'contract1',
                     title: '合同列表',
-                    path: '/admin/contract-list'
+                    path: '/admin/contract-list-money'
                 },
                 {
                     key: 'contract2',
@@ -104,7 +104,7 @@ const defaultState = {
     // 数据报表
     dataReport: [
         {
-            key: 'officeDesktop4',
+            key: 'admin',
             title: '收据报表',
             children: [
                 {
@@ -128,7 +128,7 @@ const defaultState = {
     // 系统设置
     systemSet: [
         {
-            key: 'officeDesktop4',
+            key: 'admin',
             title: '系统设置',
             children: [
                 {
@@ -149,6 +149,8 @@ const defaultState = {
             ]
         }
     ]
+    //
+    
 }
 
 export default function(state =  defaultState, action) {

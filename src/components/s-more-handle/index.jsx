@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.less';
-import SBase from '../s-base';
+import SBase from '../s-base/s-base';
 
 class SMoreHandle extends Component {
     

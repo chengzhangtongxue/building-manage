@@ -2,6 +2,7 @@
 
 .building-list {
     position: relative;
+    height: 100%;
     .list-handle {
         position: relative;
         height: 60px;
@@ -98,6 +99,17 @@
                 }
             }
         }
+    }
+    .list-content {
+        width: 100%;
+        height: calc(~'100% - 120px');   
+        overflow: auto;
+    }
+    .list-footer {
+        height: 50px;
+        line-height: 50px;
+        box-sizing: border-box;
+        border-top: 2px solid @font-color-active;
     }
     .footer {
         height: 50px;

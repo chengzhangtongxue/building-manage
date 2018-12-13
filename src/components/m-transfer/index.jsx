@@ -12,7 +12,6 @@ class MTransfer extends Component {
     }
     
     initData = () => {
-        console.log(this.props.targetKeys);
         this.setState({
             targetKeys: this.props.targetKeys
         });
@@ -23,7 +22,6 @@ class MTransfer extends Component {
     }
     
     handleChange = (targetKeys) => {
-        console.log(targetKeys);
         this.setState({ targetKeys });
     }
     sure = () => {
@@ -37,7 +35,6 @@ class MTransfer extends Component {
         }
         const _targetKeys = ',' + this.state.targetKeys.toString() + ',';
         const _dataSource = this.props.dataSource.filter((item) => {
-            console.log(_targetKeys, item)
 
             return _targetKeys.indexOf(','+item.key+',') < 0;
         });
@@ -48,7 +45,6 @@ class MTransfer extends Component {
         this.props.cancel();
     }
     render() {
-        console.log(this.props.dataSource);
         const dataSource = this.props.dataSource.filter((item) => {
             return typeof item.title === 'string';
         });

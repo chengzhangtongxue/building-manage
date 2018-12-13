@@ -9,9 +9,10 @@ class ListHeader extends Component {
 
     }
     closeTableCheckHandle = () => {
-        ;
+        
     }
     render() {
+        let { stateOption = { total: 0, flag: false } } = this.props;
         return (
             <div className="component-ui-list-header">
                 {
@@ -19,7 +20,7 @@ class ListHeader extends Component {
                 }
                 <div className="right-handle">
                     {
-                        this.props.option.btns && this.props.option.btns.map((item, index) => {
+                        this.props.defaultOption.btns && this.props.defaultOption.btns.map((item, index) => {
                             if(item.type === 'btn-add') {
                                 return <Button key={index} type={ item.btnType } style={{margin:'0 10px'}} onClick={ () => { item.handle() } }>{ item.title }</Button>
                             } else if(item.type === 'more') {
@@ -34,11 +35,14 @@ class ListHeader extends Component {
                     }
                 </div>
 
+                {/* 选中表格后 弹出层的 更多操作 start */}
                 <TableCheckHandle 
-                        total={ this.props.checkedHandle.total }
-                        className={ `${this.props.checkedHandle.flag ? 'active' : ''}` }
-                        close={ this.props.option.checkHandle.handle }
+                        defaultOption={this.props.defaultOption.moreOperBtns}
+                        total={ stateOption.total }
+                        className={ `${stateOption.flag ? 'active' : ''}` }
+                        close={ this.props.defaultOption.close }
                         />
+                {/* 选中表格后 弹出层的 更多操作 end */}
             </div>
         );
     }

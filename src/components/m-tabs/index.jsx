@@ -1,50 +1,101 @@
 import React, { Component } from 'react';
 import './index.less';
 
-import { Tabs } from 'antd';
+import {withRouter, Link} from "react-router-dom";
+
+// import store from '../../store';
+import { connect } from 'react-redux';
+import { Tabs  } from 'antd';
 const TabPane = Tabs.TabPane;
 
 class MTabs extends Component {
-    state = {
-        activeKey: '1',
-        panes : [
-            { title: 'Tab 1', content: 'Content of Tab 1', key: '1' },
-            { title: 'Tab 2', content: 'Content of Tab 2', key: '2' },
-            { title: 'Tab 3', content: 'Content of Tab 3', key: '3' },
-        ]
-    }
+    /**
+     * tabPanes被选中的回调
+     */
     onChange = (activeKey) => {
-        this.setState({
-            activeKey 
-        });
+        // const action = {
+        //     type: 'update-tabs-active-key',
+        //     activeKey
+        // }
+        // store.dispatch(action);
+
+        // this.props.history.push({ 
+        //     pathname : this.state.tabPanes[activeKey].path
+        // });
+    }
+    
+    componentDidMount() {
+        // console.log(store);
+        // let { tabPanes, activeKey } = store.getState().tabPanesReducer;
+        // this.setState({
+        //     tabPanes,
+        //     activeKey: String(activeKey)
+        // });
+        // store.subscribe(() => {
+        //     //  { tabPanes, activeKey } = store.getState().tabPanesReducer;
+        //     tabPanes = store.getState().tabPanesReducer.tabPanes;
+        //     activeKey = store.getState().tabPanesReducer.activeKey;
+        //     console.log(tabPanes, activeKey);
+        //     this.setState({
+        //         tabPanes,
+        //         activeKey: String(activeKey)
+        //     });
+        // });
+    }
+    /**
+     * 关闭导航
+     */
+    closeTabPane = (targetKey, fnName) => {
+        // if('remove' === fnName) {
+        //     const action = {
+        //         type: 'delete-tabs',
+        //         index: targetKey
+        //     }
+        //     store.dispatch(action);
+        // }
+    }
+    componentWillUnmount() {
+        // this.unsubscribe && this.unsubscribe();
     }
     render() {
         return (
             <div className="component-tabs">
                 <Tabs
-                onChange={this.onChange}
-                activeKey={this.state.activeKey}
-                type="card"
-                // onEdit={this.onEdit}
+                onChange={this.props.onChange}
+                // 当前激活 tab 面板的 key
+                activeKey={this.props.activeKey}
+                // type="card"
+                type="editable-card"
+                // 是否隐藏加号图标，在 type="editable-card" 时有效
+                hideAdd={true}
+                tabBarGutter={ 0 }
+                onEdit={this.closeTabPane}
+                // closable
             >
-                {/* {this.state.panes.map(pane => <TabPane tab={pane.title} key={pane.key} closable={pane.closable}>{pane.content}</TabPane>)} */}
-                <TabPane tab={'办公桌面'} key={'1'} closable={true}>1</TabPane>
-                <TabPane tab={'合同列表'} key={'2'}>2</TabPane>
-                <TabPane tab={'楼宇列表与窗口'} key={'3'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口2'} key={'4'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口3'} key={'5'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口4'} key={'6'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口5'} key={'7'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口6'} key={'8'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口7'} key={'9'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口8'} key={'10'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口9'} key={'11'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口10'} key={'12'}>3</TabPane>
-                <TabPane tab={'楼宇列表与窗口10'} key={'13'}>3</TabPane>
+                {
+                    this.props.tabPanes.map((item, key) => <TabPane tab={ <Link to={`${item.path}`}>{item.title}</Link> } key={key} closable={ true }></TabPane>)
+                }
             </Tabs>
             </div>
         );
     }
 }
 
-export default MTabs;
+const mapStateToProps = (state) => {
+    return {
+        tabPanes: state.tabPanesReducer.tabPanes,
+        activeKey: String(state.tabPanesReducer.activeKey)
+    }
+} 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onChange(activeKey) {
+            const action = {
+                type: 'update-tabs-active-key',
+                activeKey
+            }
+            dispatch(action);
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(MTabs);

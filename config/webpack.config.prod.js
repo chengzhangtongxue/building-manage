@@ -85,6 +85,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
           require('postcss-preset-env')({
             autoprefixer: {
               flexbox: 'no-2009',
+              browsers: ['last 2 versions']
             },
             stage: 3,
           }),

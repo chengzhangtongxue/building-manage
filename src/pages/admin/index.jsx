@@ -1,44 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './index.less';
 import { getCookie } from '@/util';
 import LeftNav from '../../components/left-nav';
 import MHeader from '../../components/m-header';
 import AdminRouter from './admin-router';
 import SecondNav from '../../components/second-nav';
-// import { HashRouter, Route, Switch } from 'react-router-dom';
+import AdminIndex from './pages/index';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 class Admin extends Component {
+    state = {
+        isLogin: false
+    }
+    isLogin = false
     componentWillMount() {
-        const isLogin = getCookie('isLogin');
-        if(!isLogin) {
-            this.props.history.push('/login');
-        }
+        const isLogin = getCookie('token');
+        this.isLogin = isLogin;
+        // this.setState({
+        //     isLogin
+        // });
     }
     componentDidMount() {
+        
     }
     render() {
         return (
-            <div className="admin">
-                <LeftNav></LeftNav>
-                <div className="layout-main">
-                    <MHeader></MHeader>
-                    <div className="layout-content">
-                        <SecondNav></SecondNav>
-                        <AdminRouter></AdminRouter>
-                        {/* <HashRouter>
-                            <RouterContent>
-                                <Switch>
-                                    <Route path="/admin/building-info" component={BulidingInfo}></Route>
-                                    <Route path="/admin/buliding-list" component={BulidingList}></Route>
-                                    <Route path="/admin/buliding-add" component={BulidingAdd}></Route>
-                                    <Route path="/admin" component={BulidingInfo}></Route>
-                                </Switch>
-                            </RouterContent>
-                        </HashRouter> */}
+            <Fragment>
+                {
+                    !this.isLogin ? <Redirect to="/login" /> : <div className="admin">
+                        <LeftNav></LeftNav>
+                        <div className="layout-main">
+                            <MHeader></MHeader>
+                            <div className="layout-content">
+                                <SecondNav></SecondNav>
+        
+                                <HashRouter>
+                                    <Switch>
+                                        <Route path="/admin" exact component={AdminIndex}></Route>
+                                        <AdminRouter></AdminRouter>
+                                    </Switch>
+                                </HashRouter>
+                            </div>
+                        </div>
                     </div>
-                    
-                </div>
-            </div>
+                }
+            </Fragment>
         );
     }
 }

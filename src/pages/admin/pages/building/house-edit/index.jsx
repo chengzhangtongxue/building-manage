@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './index.less';
-import Base from '../../base';
+import Base from '../../base/base';
 // import { Card, Row, Col, Form, Input, Select, Upload, Icon} from 'antd';
 import { Row, Col, Form, Input, Card, Select, Upload, Icon, Button } from 'antd';
-import EditHeader from '../../../../../components-ui/edit-header';
+import EditHeader from '../../../../../components-ui/edit-header/edit-header';
 const { TextArea } = Input;
 const FormItem = Form.Item;
 const Option = Select.Option;

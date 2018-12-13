@@ -10,7 +10,7 @@ class RouterContent extends Component {
     render() {
         return (
             <div className="router-content">
-                {/* <MTabs></MTabs> */}
+                <MTabs></MTabs>
                 <div className="children">
                     {this.props.children}
                 </div>

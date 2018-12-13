@@ -15,6 +15,17 @@
         margin-right:0;
         font-size: 12px;
         color: @font-color;
+        &:hover {
+            color: rgba(25,158,216, 0.8);
+            .anticon-close {
+                color: @font-color-active;
+            }
+        }
+        .anticon-close{
+            &:hover {
+                color: @font-color-active;
+            }
+        }
         &.ant-tabs-tab-active {
             height: 41px;
             color: #199ed8;

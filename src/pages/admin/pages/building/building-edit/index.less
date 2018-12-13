@@ -1,0 +1,73 @@
+@import '../../../../../less/common.less';
+.building-add {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    .row-no-border {
+        &.ant-card-bordered {
+            border:0;
+        }
+        .ant-card-bordered {
+            border: 0;
+        }
+    }
+    .btns {
+        display: flex;
+        justify-content: flex-end;
+    }
+    h2 {
+        color: @font-color;
+        padding-left: 10px;
+        margin-bottom: 0;
+        font-size: 28px;
+        font-weight: 400;
+    }
+    .form-item {
+        h2 {
+            font-size: 18px;
+            font-weight: 400;
+            color: rgb(71, 80, 89);
+            border-left: 5px solid @font-color-active;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+        .ant-form-item {
+            margin-bottom:0;
+        }
+    }
+
+    // 添加楼宇
+    .to-do-add-building {
+        cursor: pointer;
+        width: 100px;
+        color: @font-color-active;
+    }
+    // 删除一个楼宇
+    .delete-one-floor {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 6px;
+        font-size: 12px;
+        color: @font-color-active;
+    }
+    .page-nav {
+        width: 180px;
+        cursor: pointer;
+        li {
+            height: 40px;
+            line-height: 40px;
+            list-style: none;
+            text-align:right;
+            padding-right:10px;
+            &:hover {
+                background-color: rgba(242, 242, 242, 1);
+                color: @font-color;
+            }
+            &:selected {
+                background-color: rgba(242, 242, 242, 1);
+            }
+        }
+    }
+}

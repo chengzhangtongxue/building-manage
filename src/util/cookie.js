@@ -4,7 +4,7 @@
  * @param {*} value 
  * @param {*} hour  默认一个小时
  */
-export function _setCookie(name, value, hour = 1) {
+export function setCookie(name, value, hour = 1) {
     const d = new Date();
     d.setTime(d.getTime() + (hour * 1 * 60 * 60 * 1000));
     const expires = 'expires=' + d.toUTCString();
@@ -15,7 +15,7 @@ export function _setCookie(name, value, hour = 1) {
  * 获取cookie
  * @param {*} name 
  */
-export function _getCookie(name) {
+export function getCookie(name) {
     const cookieName = encodeURIComponent(name),
         cookieStart = document.cookie.indexOf(cookieName);
     let cookieValue = '';

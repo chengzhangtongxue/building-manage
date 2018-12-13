@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './index.less';
-import Base from '../../base';
-import SMyBuilding from '../../../../../components/s-my-building';
+import Base from '../../base/base';
+import SMyBuilding from '../../../../../components/s-my-building/s-my-building';
 import SMoreHandle from '../../../../../components/s-more-handle';
-import MTable from '../../../../../components/m-table';
+import MTable from '../../../../../components/m-table/m-table';
 import { Divider, Icon, Row, Col, Button, Link } from 'antd';
 
 class BuildingListWindow extends Base {

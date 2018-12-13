@@ -37,7 +37,10 @@ class LeftNav extends Component {
                     <i className="iconfont icon-caidananniu" onClick={ () => { this.pickupMenu() }}></i>
                 </div>
                 <div className="nav-content">
-                    <Menu mode="inline">
+                    <Menu 
+                        mode="inline"
+                        defaultSelectedKeys={['2']}
+                        >
                         <Menu.Item key="1" onClick={() => this.onItemSelect('officeDesktop')}>
                             <i className="iconfont icon-zhuomianduan"></i>
                             <span>办公桌面</span>
@@ -59,7 +62,7 @@ class LeftNav extends Component {
                 <div className="manage-use clearfix">
                     <div className="icon"></div>
                     <div className="info">
-                        <div className="name">李成章</div>
+                        <div className="name" title="李**">李**</div>
                         <div className="company">南京松花有限公司</div>
                     </div>
                 </div>
