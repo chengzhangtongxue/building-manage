@@ -41,65 +41,65 @@ const defaultState = {
             ]
         },
         {
-            key: 'officeDesktop2',
+            key: 'admin',
             title: '招租',
             children: [
                 {
-                    key: 'let1',
+                    key: 'visiting-customer-info',
                     title: '来访客户信息',
                     path: '/admin/visiting-customer-info'
                 },
                 {
-                    key: 'let2',
+                    key: 'visiting-record',
                     title: '来访客户记录',
-                    path: '/admin/customer-record'
+                    path: '/admin/visiting-record'
                 },
             ]
         },
         {
-            key: 'officeDesktop3',
+            key: 'admin',
             title: '合同',
             children: [
                 {
-                    key: 'contract1',
+                    key: 'contract-list-money',
                     title: '合同列表',
                     path: '/admin/contract-list-money'
                 },
                 {
-                    key: 'contract2',
+                    key: 'contract-lease',
                     title: '合同租期',
                     path: '/admin/contract-lease'
                 },
                 {
-                    key: 'contract3',
+                    key: 'contract-contacts',
                     title: '合同联系人',
                     path: '/admin/contract-contacts'
                 },
                 {
-                    key: 'contract4',
+                    key: 'contract-bill',
                     title: '合同账单',
                     path: '/admin/contract-bill'
                 },
             ]
         },
         {
-            key: 'officeDesktop4',
+            key: 'admin',
             title: '收付款',
             children: [
                 {
-                    key: 'receive-payment1',
+                    key: 'receive-payment-plan',
                     title: '收付款计划',
                     path: '/admin/receive-payment-plan'
                 },
                 {
-                    key: 'receive-payment2',
-                    title: '合同租期',
-                    path: '/admin/contract-record'
+                    key: 'receive-payment-record',
+                    title: '收付款记录',
+                    path: '/admin/receive-payment-record'
                 },
                 {
-                    key: 'receive-payment3',
-                    title: '收付款记录',
-                    path: '/admin/contract-total'
+                    key: 'receive-payment-total',
+                    title: '收付款合计',
+                    path: '/admin/receive-payment-total'
                 }
             ]
         }

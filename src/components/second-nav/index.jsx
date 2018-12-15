@@ -43,9 +43,9 @@ class SecondNav extends Component {
                                 selectedKeys={ this.props.selectedKeys }
                                 >
                                 {
-                                    this.props.navList.map(item => {
+                                    this.props.navList.map((item, key) => {
                                         return (
-                                            <Menu.SubMenu key={ item.key } title={ item.title }>
+                                            <Menu.SubMenu key={ key } title={ item.title }>
                                                 {
                                                     item.children.map(child => {
                                                         return (
