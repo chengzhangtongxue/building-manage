@@ -90,7 +90,7 @@ class HouseAddForm extends Base {
                         roomArea
                     }
                 });
-                data.roomJson = roomJson;
+                data.roomJson = JSON.stringify(roomJson);
                 this.addUrlData = data;
                 this.add().then(data => {
                     message.success('新增房源成功',2,() => {
@@ -333,6 +333,7 @@ class HouseAddForm extends Base {
 
                                 })(<Select>
                                     <Option value="">请选择</Option>
+                                    <Option value="1">负责人1</Option>
                                 </Select>) 
                             }
                         </FormItem>
