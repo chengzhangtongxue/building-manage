@@ -4,11 +4,177 @@ import Base from '../../base/base';
 import SMyBuilding from '../../../../../components/s-my-building/s-my-building';
 import SMoreHandle from '../../../../../components/s-more-handle';
 import MTable from '../../../../../components/m-table/m-table';
+import ListFooter from '../../../../../components/list-footer/list-footer';
+import { url_house_list } from '../../../../../url/url';
 import { Divider, Icon, Row, Col, Button, Link } from 'antd';
 
 class BuildingListWindow extends Base {
-    state = {
-        table: false
+    queryUrl = url_house_list;
+
+    componentDidMount() {
+        this.setState({
+            // 表格和楼宇列表的切换
+            table: true,
+            /**
+             * 表格
+             */
+            tableOption: {
+                // 所有表头字段
+                columns: [
+                    {
+                        align: 'left',
+                        title: '楼宇名称',
+                        dataIndex: 'floorName',
+                        key: 'floorName',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '楼座名称',
+                        dataIndex: 'galleryName',
+                        key: 'galleryName',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '预租价格',
+                        dataIndex: 'roomPrice',
+                        key: 'roomPrice',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '起租年限',
+                        dataIndex: 'leaseAge',
+                        key: 'leaseAge',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '得房率',
+                        dataIndex: 'roomRate',
+                        key: 'roomRate',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '付款方式',
+                        dataIndex: 'paymentMethod',
+                        key: 'paymentMethod',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '装修标准',
+                        dataIndex: 'decorationStandard',
+                        key: 'decorationStandard',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        title: '室内层高',
+                        dataIndex: 'storeyHeight',
+                        key: 'storeyHeight',
+                        // fixed: 'left',
+                        width: 150
+                    },
+                    {
+                        align: 'left',
+                        title: '房屋概况',
+                        dataIndex: 'housingOutline',
+                        key: 'housingOutline',
+                        // fixed: 'left',
+                        width: 150
+                    }
+                ],
+                // 表数据字段你
+                data: [],
+                // 正在加载loading,
+                loading: true,
+                // 选择行的key值
+                selectedRowKeys:[],
+                // checked 选中的回调
+                checkedHandle: (selectedRowKeys, selectedRows) => {
+                    let { listHeaderPop } = this.state;
+                    listHeaderPop.flag = true;
+                    listHeaderPop.total = selectedRows.length;
+                    this.selectedData = selectedRows;
+                    this.setState({
+                        listHeaderPop
+                    });
+                    let { tableOption } = this.state;
+                    tableOption.selectedRowKeys = selectedRowKeys;
+                    this.setState({
+                        tableOption
+                    });
+                }
+            },
+            /** footer 分页 */
+            pagination: {
+                total: 0,
+                defaultPageSize: 20,
+                onChangeHandle: (page, pageSize) => {
+                    console.log(page, pageSize);
+                    this.queryUrlData = {
+                        pageSize: (page-1) * pageSize + 1,
+                        pageIndex: pageSize
+                    }
+                    
+                    this.init();
+                },
+                onShowSizeChangeHandle:(current,size) => {
+                    console.log(current, size)
+                    this.queryUrlData = {
+                        pageSize: (current-1) * size + 1,
+                        pageIndex: size
+                    }
+                    this.init();
+                }
+            }
+        });
+        this.init();
+    }
+
+    init() {
+        this.query().then(data => {
+            console.log(data);
+            if(data.resultData.length > 0) {
+
+            } else {
+                // let { pagination } = this.state;
+                // pagination.total = total;
+                // this.setState({
+                //     pagination
+                // });
+
+                let { tableOption } = this.state;
+                // data.resultData.floorList.forEach((item, key) => {
+                //     item.key = key;
+                // });
+                // tableOption.data = data.resultData.floorList;
+                tableOption.loading = false;
+                this.setState({
+                    tableOption
+                });
+            }
+        })
+    }
+    /**
+     * table的单行点击
+     */
+    tableRowClickHandle = (item) => {
+        this.setState({
+            // mSlideVisible: true,
+            id: item.floorId
+        });
+
+        // this.props.openBuildingDetail();
+
     }
     render() {
         return (
@@ -31,10 +197,11 @@ class BuildingListWindow extends Base {
                 </div>
                 <div className="window-content">
                     {
-                        this.state.table ? <MTable></MTable> : <FloorList/>
+                        this.state.table ? <MTable table={ this.state.tableOption } rowClickHandle={ this.tableRowClickHandle }></MTable> : <FloorList/>
                     }
                     
                 </div>
+                <ListFooter pagination={ this.state.pagination }></ListFooter>
             </div>
         );
     }

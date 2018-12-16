@@ -7,7 +7,9 @@ import EditHeader from '../../../../../components-ui/edit-header/edit-header';
 import LayoutTitle from '../../../../../components-form/layout-title';
 import LayoutCol from '../../../../../components-form/layout-col';
 import LayoutGrid from '../../../../../components-form/layout-grid';
+import MSelect from '../../../../../components-form/select/m-select';
 import { Form, Input } from 'antd';
+const TextArea = Input.TextArea;
 const FormItem = Form.Item;
 
 class CustomerEdit extends Base {
@@ -19,6 +21,11 @@ class CustomerEdit extends Base {
             type: 'primary',
             handle: (e) => {
                 console.log('保存并新增房源', this)
+                console.log(this.props.form.getFieldsValue())
+
+                this.add().then(data => {
+
+                });
             }
         },
         {
@@ -44,7 +51,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="客户名称">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('customerName',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -58,7 +65,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid label="经纪公司">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('economicCompany',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -74,7 +81,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="联系人">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('contacts',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -88,7 +95,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="联系电话">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('contactsPhone',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -141,7 +148,7 @@ class CustomerEdit extends Base {
                                                     message: '请输入个人姓名或公司名称',
                                                 }
                                             ]
-                                        })(<Input placeholder="请输入楼宇名称"></Input>)
+                                        })(<MSelect code="dic.communicationPhase"/>)
                                     }
                                 </FormItem>
                         </LayoutGrid>
@@ -155,7 +162,7 @@ class CustomerEdit extends Base {
                                                     message: '请输入个人姓名或公司名称',
                                                 }
                                             ]
-                                        })(<Input placeholder="请输入楼宇名称"></Input>)
+                                        })(<MSelect code="dic.communicationMode"/>)
                                     }
                                 </FormItem>
                         </LayoutGrid>
@@ -171,7 +178,7 @@ class CustomerEdit extends Base {
                                                     message: '请输入个人姓名或公司名称',
                                                 }
                                             ]
-                                        })(<Input placeholder="请输入楼宇名称"></Input>)
+                                        })(<TextArea></TextArea>)
                                     }
                                 </FormItem>
                         </LayoutGrid>
@@ -182,7 +189,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="客户来源">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('customerSource',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -196,7 +203,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid label="客户级别">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('customerLevel',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -242,7 +249,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="当前地址">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('currentAddress',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -256,7 +263,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="当前面积(m²)">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('currentArea',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -272,7 +279,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="当前租金">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('currentRent',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -286,7 +293,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="当前到期">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('expireDate',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -302,7 +309,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="找房原因">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('seekReason',{
                                             rules: [
                                                 {
                                                     required: true, 
@@ -316,7 +323,7 @@ class CustomerEdit extends Base {
                         <LayoutGrid required={true} label="计划入住">
                                 <FormItem>
                                     {
-                                        getFieldDecorator('floorName',{
+                                        getFieldDecorator('checkTime',{
                                             rules: [
                                                 {
                                                     required: true, 

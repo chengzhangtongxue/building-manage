@@ -5,19 +5,11 @@ import SBase from '../s-base/s-base';
 class SMoreHandle extends Component {
     
     render() {
-        // let { style } = this.props;
-        // style = style || {};
-        // return (
-        //     <ul className="more-oper" style={ style }>
-        //         <li onClick={ this.props._importData }>导入</li>
-        //         <li onClick={ this.props._exportData }>导出</li>
-        //     </ul>
-        // );
         let { style={}, className=''} = this.props;
         className += ' component-more-handle';
 
         return (
-            <SBase content={ <ExportAndImport/> } name="更多" className={ className } style={style}/>
+            <SBase content={ <ExportAndImport _exportData={this.props.exportData} _importData={this.props.importData}/> } name="更多" className={ className } style={style}/>
         );
     }
 }

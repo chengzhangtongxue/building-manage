@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.less';
-import { Table, Icon, Button, Divider, Transfer, Pagination, message } from 'antd';
+import { Table, Icon, Button, Divider, Transfer, Pagination, message, Modal } from 'antd';
 import { url_building_list, url_building_delete, url_building_un_lock, url_building_detail } from '../../../../../url/url.js';
 import { mAxios } from '../../../../../util';
 import { SUCCESS } from '../../../../../util/constant.js';
@@ -38,7 +38,10 @@ class BuildingList extends Base {
             {
                 title: '查看统计',
                 handle: () => {
-                    console.log('筛选', this)
+                    console.log('查看统计', this);
+                    this.setState({
+                        table: !this.state.table
+                    });
                 }
             },
             {
@@ -51,6 +54,13 @@ class BuildingList extends Base {
             },
             {
                 type: 'more',
+                exportData: () => {
+                    console.log('导出', this)
+                },
+                importData: () => {
+                    console.log('导入', this)
+
+                }
             }
         ],
         // 弹窗层的更多操作 按钮
@@ -86,27 +96,29 @@ class BuildingList extends Base {
                 icon: 'lock',
                 handle: () => {
                     console.log('锁定', this);
-                    let { modal } = this.state;
-                    modal.show = true;
-                    modal.title = '锁定';
-                    modal.content = <p>锁定后将无法进行编辑作废等操作，确定要锁定选中楼宇吗?</p>;
-                    modal.handle = () => {
-                        let floorId = this.selectedData.reduce((a, b) => {
-                            return  `${a.floorId},${b.floorId}`;
-                        });
-                        console.log('floorId'+floorId);
-
-                        this.un_lockUrlData = {
-                            floorId: this.selectedData[0].floorId,
-                            status: '0'
+                    const modal = Modal.confirm();
+                    modal.update({
+                        title: '锁定',
+                        content: '锁定后将无法进行编辑作废等操作，确定要锁定选中楼宇吗?',
+                        onCancel: () => {
+                            modal.destroy();
+                        },
+                        onOk: () => {
+                            let floorId = this.selectedData.reduce((a, b) => {
+                                return  `${a.floorId},${b.floorId}`;
+                            });
+                            console.log('floorId'+floorId);
+    
+                            this.un_lockUrlData = {
+                                floorId: this.selectedData[0].floorId,
+                                status: '0'
+                            }
+                            this.un_lock().then(data => {
+                                message.success('锁定成功');
+                                this.init();
+                            });
+                            modal.destroy();
                         }
-                        this.un_lock().then(data => {
-                            message.success('锁定成功');
-                            this.init();
-                        });
-                    }
-                    this.setState({
-                        modal
                     });
                 }
             },
@@ -115,28 +127,32 @@ class BuildingList extends Base {
                 icon: 'unlock',
                 handle: () => {
                     console.log('解锁', this);
-                    let { modal } = this.state;
-                    modal.show = true;
-                    modal.title = '解锁';
-                    modal.content = <p>作废后将放入回收站，确认要解锁所选楼宇吗？</p>;
-                    modal.handle = () => {
-                        let floorId = this.selectedData.reduce((a, b) => {
-                            return  `${a.floorId},${b.floorId}`;
-                        });
+                    const modal = Modal.confirm();
+                    modal.update({
+                        title: '解锁',
+                        content: '作废后将放入回收站，确认要解锁所选楼宇吗？',
+                        onCancel: () => {
+                            modal.destroy();
+                        },
+                        onOk: () => {
+                            let floorId = this.selectedData.reduce((a, b) => {
+                                return  `${a.floorId},${b.floorId}`;
+                            });
+    
+                            this.un_lockUrlData = {
+                                floorId: this.selectedData[0].floorId,
+                                status: '1',
+                                loginToken: ''
+                            }
+                            this.un_lock().then(data => {
+                                message.success('解锁成功');
+                                this.init();
+                            });
 
-                        this.un_lockUrlData = {
-                            floorId: this.selectedData[0].floorId,
-                            status: '1',
-                            loginToken: ''
+                            modal.destroy();
                         }
-                        this.un_lock().then(data => {
-                            message.success('解锁成功');
-                            this.init();
-                        });
-                    }
-                    this.setState({
-                        modal
                     });
+
                 }
             },
             {
@@ -458,30 +474,9 @@ class BuildingList extends Base {
             checkedList: filterData
         });
     }
-    /**
-     * 查看统计和列表
-     */
-    toggleListStatistics = (e) => {
-        this.setState({
-            table: !this.state.table
-        });
-        e.preventDefault();
-    }
     // 去新增
     addBuilding = () => {
         this.props.history.push('/admin/building-add');
-    }
-    /**
-     * 导入
-     */
-    importData = () => {
-        alert('导入');
-    }
-    /**
-     * 导出
-     */
-    exportData = () => {
-        alert('导出');
     }
     /**
      * table的单行点击
@@ -582,14 +577,7 @@ class BuildingList extends Base {
                 } */}
                 
                 
-                {
-                    // this.props.mSlideVisible && 
-                    (<MSlide>
-                                                    <BuildingDetail id={ this.state.id }/>
-                                                </MSlide>)
-                }
-                
-                
+                <MSlide> <BuildingDetail id={ this.state.id }/></MSlide>
                 {
                     this.state.modal.show && <MModal modal={ this.state.modal }>{ this.state.modal.content }</MModal>
                 }

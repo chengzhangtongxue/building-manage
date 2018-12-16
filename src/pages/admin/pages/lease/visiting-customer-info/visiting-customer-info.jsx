@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.less';
-import { Icon, Button,  } from 'antd';
+import { Icon, Button, Input } from 'antd';
 import Base from '../../base/base';
 import { url_lease_customer_info } from '../../../../../url/url'
 import SMyBuilding from '../../../../../components/s-my-building/s-my-building';
@@ -9,6 +9,8 @@ import TableCheckHandle from '../../../../../components/table-checked-handle';
 import ListHeader from '../../../../../components-ui/list-header';
 import MTable from '../../../../../components/m-table/m-table';
 import ListFooter from '../../../../../components/list-footer/list-footer';
+
+const Search = Input.Search;
 
 /**
  * 来访客户信息
@@ -348,6 +350,13 @@ class VisitingCustomerInfo extends Base {
 
                 <ListHeader defaultOption={ this.listHeaderOption } stateOption={ this.state.listHeaderPop }>
                     <SMyBuilding style={{ marginLeft:20,marginTop: 15 }}/>
+                    <div className="quick-search" style={{position:'absolute',height:60,width:280,left:'50%',top:0,marginLeft:-180}}>
+                        <Search
+                            placeholder="搜索楼座房号如:G-1213或联系人"
+                            onSearch={value => console.log(value)}
+                            enterButton
+                            />
+                    </div>
                 </ListHeader>
 
                 <div className="customer-info-list">

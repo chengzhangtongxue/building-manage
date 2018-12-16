@@ -1,20 +1,21 @@
 import React from 'react';
 import './index.less';
-import { Icon, Button,  } from 'antd';
+import { Icon, Button, Input } from 'antd';
 import Base from '../../base/base';
-import { url_lease_customer_info } from '../../../../../url/url'
+import { url_lease_visiting_record } from '../../../../../url/url'
 import SMyBuilding from '../../../../../components/s-my-building/s-my-building';
 import SMoreHandle from '../../../../../components/s-more-handle';
 import TableCheckHandle from '../../../../../components/table-checked-handle';
 import ListHeader from '../../../../../components-ui/list-header';
 import MTable from '../../../../../components/m-table/m-table';
 import ListFooter from '../../../../../components/list-footer/list-footer';
-
+import MSlide from '../../../../../components/m-slide/m-slide';
+const Search = Input.Search;
 /**
  * 来访客户信息
  */
 class VisitingRecord extends Base {
-    queryUrl = url_lease_customer_info;
+    queryUrl = url_lease_visiting_record;
     
     /**
      * 列表头部右侧的按钮事件信息
@@ -94,174 +95,61 @@ class VisitingRecord extends Base {
                 // 所有表头字段
                 columns: [
                     {
-                        align: 'left',
-                        title: '楼宇名称',
-                        dataIndex: 'floorName',
-                        key: 'floorName',
-                        // fixed: 'left',
+                        title: '来访记录id',
+                        dataIndex: 'visitingId',
+                        key: 'visitingId',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '空调类型',
-                        dataIndex: 'airConditionerType',
-                        key: 'airConditionerType',
-                        // fixed: 'left',
+                        title: '客户id',
+                        dataIndex: 'customerId',
+                        key: 'customerId',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '空调费',
-                        dataIndex: 'airConditioningFee',
-                        key: 'airConditioningFee',
+                        title: '意向房源',
+                        dataIndex: 'intentionalSource',
+                        key: 'intentionalSource',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '电梯数量',
-                        dataIndex: 'elevatorsNumber',
-                        key: 'elevatorsNumber',
-                        // fixed: 'left',
+                        title: '租赁阶段',
+                        dataIndex: 'leasePhase',
+                        key: 'leasePhase',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '层高',
-                        dataIndex: 'floorHeight',
-                        key: 'floorHeight',
-                        // fixed: 'left',
+                        title: '来访方式',
+                        dataIndex: 'visitType',
+                        key: 'visitType',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '投资商',
-                        dataIndex: 'floorInvestor',
-                        key: 'floorInvestor',
-                        // fixed: 'left',
+                        title: '期望租金',
+                        dataIndex: 'expectedRent',
+                        key: 'expectedRent',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '层数',
-                        dataIndex: 'floorNumber',
-                        key: 'floorNumber',
-                        // fixed: 'left',
+                        title: '成交率',
+                        dataIndex: 'turnoverRate',
+                        key: 'turnoverRate',
                         width: 150
                     },
                     {
                         title: '备注',
-                        dataIndex: 'floorRemark',
-                        key: 'floorRemark',
-                        // fixed: 'left',
+                        dataIndex: 'remark',
+                        key: 'remark',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '空调是否开放',
-                        dataIndex: 'isAirConditioner',
-                        key: 'isAirConditioner',
-                        // fixed: 'left',
+                        title: '负责人',
+                        dataIndex: 'personInCharge',
+                        key: 'personInCharge',
                         width: 150
                     },
                     {
-                        align: 'left',
-                        title: '车位租金',
-                        dataIndex: 'parkingFee',
-                        key: 'parkingFee',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        align: 'left',
-                        title: '车位数量',
-                        dataIndex: 'parkingNumber',
-                        key: 'parkingNumber',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        align: 'left',
-                        title: '物业公司',
-                        dataIndex: 'propertyCompany',
-                        key: 'propertyCompany',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        align: 'left',
-                        title: '物业费',
-                        dataIndex: 'propertyFee',
-                        key: 'propertyFee',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '公摊费',
-                        dataIndex: 'publicFee',
-                        key: 'publicFee',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '详细地址',
-                        dataIndex: 'address',
-                        key: 'address',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '水电费',
-                        dataIndex: 'WaterElectricFee',
-                        key: 'WaterElectricFee',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '电梯品牌',
-                        dataIndex: 'elevatorBrand',
-                        key: 'elevatorBrand',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '项目介绍',
-                        dataIndex: 'projectIntroduction',
-                        key: 'projectIntroduction',
-                        width: 150
-                    },
-                    {
-                        title: '交通概况',
-                        dataIndex: 'trafficSurvey',
-                        key: 'trafficSurvey',
-                        // fixed: 'left',
-                        width: 150
-                    },
-                    {
-                        title: '状态',
-                        dataIndex: 'floorStatus',
-                        key: 'floorStatus',
-                        width: 150
-                    },
-                    {
-                        title: '修改人',
-                        dataIndex: 'updateBy',
-                        key: 'updateBy',
-                        width: 150
-                    },
-                    {
-                        title: '修改时间',
-                        dataIndex: 'updateTime',
-                        key: 'updateTime',
-                        width: 150
-                    },
-                    {
-                        title: '新建人',
-                        dataIndex: 'createdBy',
-                        key: 'createdBy',
-                        width: 150
-                    },
-                    {
-                        title: '新建时间',
+                        title: '创建时间',
                         dataIndex: 'creationTime',
                         key: 'creationTime',
                         width: 150
@@ -312,12 +200,28 @@ class VisitingRecord extends Base {
                 }
             }
         });
-        // this.init();
+        this.init();
     }
 
     init = () => {
         this.query().then(data => {
-
+            if(data.resultData.length <= 0) {
+                return;
+            }
+            const tableOption = { ...this.state.tableOption };
+            data.resultData.forEach((item,index) => item.key = index);
+            tableOption.data = data.resultData;
+            tableOption.loading = false;
+            this.setState({
+                tableOption
+            });
+            
+            let total = data.resultData.totalRecord || 1;
+            let { pagination } = this.state;
+            pagination.total = total;
+            this.setState({
+                pagination
+            });
         });
     }
 
@@ -340,13 +244,26 @@ class VisitingRecord extends Base {
 
                 <ListHeader defaultOption={ this.listHeaderOption } stateOption={ this.state.listHeaderPop }>
                     <SMyBuilding style={{ marginLeft:20,marginTop: 15 }}/>
+                    <div className="quick-search" style={{position:'absolute',height:60,width:280,left:'50%',top:0,marginLeft:-180}}>
+                        <Search
+                            placeholder="搜索楼座房号如:G-1213或联系人"
+                            onSearch={value => console.log(value)}
+                            enterButton
+                            />
+                    </div>
                 </ListHeader>
 
                 <div className="record-list">
-                    {/* <MTable table={ this.state.tableOption } rowClickHandle={ this.tableRowClickHandle }/> */}
+                    {
+                        this.state.tableOption && <MTable table={ this.state.tableOption } rowClickHandle={ this.tableRowClickHandle }/>
+                    }
                 </div>
 
                 <ListFooter pagination={ this.state.pagination }></ListFooter>
+
+                <MSlide>
+                    
+                </MSlide>
             </div>
         );
     }

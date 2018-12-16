@@ -5,7 +5,7 @@ import RouterContent from './router-content';
 import BulidingListWindow from './pages/building/building-list-window/building-list-window';
 import BulidingList from './pages/building/building-list/building-list';
 import VisitingRecord from './pages/lease/visiting-record/visiting-record';
-import HouseEdit from './pages/building/house-edit';
+import HouseEdit from './pages/building/house-edit/house-edit';
 import VisitingCustomerInfo from './pages/lease/visiting-customer-info/visiting-customer-info';
 import ContractListMoney from './pages/contract/contract-list-money';
 

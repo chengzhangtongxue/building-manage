@@ -215,12 +215,14 @@ class MTable extends Component {
     }
 
     render() {
+        // console.log(this.props.table);
+        const { table = {}} = this.props;
         /**
          * 多选select 事件
          */
         let rowSelection = {
             columnWidth: 40,
-            selectedRowKeys: this.props.table.selectedRowKeys,
+            selectedRowKeys: this.props.table.selectedRowKeys || [],
             onChange: (selectedRowKeys, selectedRows) => {
                 this.props.table.checkedHandle(selectedRowKeys,selectedRows);
             },

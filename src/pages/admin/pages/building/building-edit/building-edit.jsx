@@ -11,6 +11,9 @@ import EditHeader from '../../../../../components-ui/edit-header/edit-header';
 import { Row, Col, Form, Input, Card, Select, Upload, Icon, Button, TimePicker, message } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { SUCCESS } from '../../../../../util/constant';
+import LayoutCol from '../../../../../components-form/layout-col';
+import GalleryUnit from '../../../../../components-form/gallery-unit/gallery-unit';
+import AirConditioningType from '../../../../../components-form/select/airConditioning-type';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -54,6 +57,7 @@ class BuildingEditForm extends Base {
      * 楼宇新增
      */
     ajaxAddBuilding = (e) => {
+        console.log(this.props.form.getFieldsValue());
         let errs = 0;
         this.props.form.validateFields((err, values) => {
             if (err) {
@@ -127,9 +131,8 @@ class BuildingEditForm extends Base {
 
                 <Card className="row-no-border form-item" style={{ height: 'calc( 100% - 81px)', overflow: 'auto'}}>
                     <LayoutTitle title="基本信息"></LayoutTitle>
-                    <Row>
-                        <Col span={ 7 } offset={4}>
-                            <LayoutGrid required={true} label="楼宇名称">
+                    <LayoutCol>
+                        <LayoutGrid required={true} label="楼宇名称">
                                 <FormItem>
                                     {
                                         getFieldDecorator('floorName',{
@@ -142,11 +145,8 @@ class BuildingEditForm extends Base {
                                         })(<Input placeholder="请输入楼宇名称"></Input>)
                                     }
                                 </FormItem>
-                            </LayoutGrid>
-                            
-                        </Col>
-                        <Col span={ 7 } offset={ 2 }>
-                            <LayoutGrid label="楼宇图片">
+                        </LayoutGrid>
+                        <LayoutGrid label="楼宇图片">
                                 <FormItem>
                                     <Upload
                                         name="avatar"
@@ -166,8 +166,8 @@ class BuildingEditForm extends Base {
                                     </Upload>
                                 </FormItem>
                             </LayoutGrid>
-                        </Col>
-                    </Row>
+                    </LayoutCol>
+                    
                     
                     {
                         this.state.floors && this.state.floors.map((item, index) => {
@@ -191,11 +191,7 @@ class BuildingEditForm extends Base {
                                                     rules: [
                                                         { required: true }
                                                     ]
-                                                })(<Select style={{width:'100%'}}>
-                                                    <Option value="1">1栋</Option>
-                                                    <Option value="2">2栋</Option>
-                                                    <Option value="3">3栋</Option>
-                                                </Select>)
+                                                })(<GalleryUnit/>)
                                             }
                                         </FormItem>
                                     </LayoutGrid>
@@ -337,7 +333,7 @@ class BuildingEditForm extends Base {
                                 {
                                     getFieldDecorator('airConditionerType',{
 
-                                    })(<Input placeholder="请输入公司名称"></Input>)
+                                    })(<AirConditioningType/>)
                                 }
                             </FormItem>
                         </Col>

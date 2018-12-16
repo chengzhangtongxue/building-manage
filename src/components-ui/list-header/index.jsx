@@ -5,12 +5,6 @@ import SMoreHandle  from '../../components/s-more-handle';
 import TableCheckHandle from '../../components/table-checked-handle';
 
 class ListHeader extends Component {
-    state = {
-
-    }
-    closeTableCheckHandle = () => {
-        
-    }
     render() {
         let { stateOption = { total: 0, flag: false } } = this.props;
         return (
@@ -24,7 +18,7 @@ class ListHeader extends Component {
                             if(item.type === 'btn-add') {
                                 return <Button key={index} type={ item.btnType } style={{margin:'0 10px'}} onClick={ () => { item.handle() } }>{ item.title }</Button>
                             } else if(item.type === 'more') {
-                                return <SMoreHandle key={index} style={{margin: '0 30px 0 10px'}}/>
+                                return <SMoreHandle key={index} exportData={item.exportData} importData={item.importData} style={{margin: '0 30px 0 10px'}}/>
                             } else {
                                 return <div key={index} className="handle" onClick={ () => { item.handle() } }>
                                 <Icon type="paper-clip" />
