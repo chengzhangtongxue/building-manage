@@ -14,6 +14,7 @@ import { SUCCESS } from '../../../../../util/constant';
 import LayoutCol from '../../../../../components-form/layout-col';
 import GalleryUnit from '../../../../../components-form/gallery-unit/gallery-unit';
 import AirConditioningType from '../../../../../components-form/select/airConditioning-type';
+import ProvinceCityCounty from '../../../../../components-form/select/province-city-county';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -259,16 +260,16 @@ class BuildingEditForm extends Base {
                     <Row>
                         <Col span={7} offset={4}>
                             <LayoutGrid label="楼宇区位">
+
+                                
                                 <FormItem>
                                     {
                                         getFieldDecorator('province',{
 
-                                        })(<Select>
-                                            <Option value="">请选择</Option>
-                                        </Select>)
+                                        })(<ProvinceCityCounty/>)
                                     }
                                 </FormItem>
-                                <FormItem>
+                                {/* <FormItem>
                                     {
                                         getFieldDecorator('city',{
 
@@ -285,17 +286,19 @@ class BuildingEditForm extends Base {
                                             <Option value="">请选择</Option>
                                         </Select>)
                                     }
-                                </FormItem>
+                                </FormItem> */}
                             </LayoutGrid>
                         </Col>
                         <Col span={7} offset={2}>
-                            <FormItem label="详细地址">
-                                {
-                                    getFieldDecorator('address',{
+                            <LayoutGrid label="详细地址">
+                                <FormItem>
+                                    {
+                                        getFieldDecorator('address',{
 
-                                    })(<Input placeholder="请输入公司名称"></Input>)
-                                }
-                            </FormItem>
+                                        })(<Input placeholder="请输入公司名称"></Input>)
+                                    }
+                                </FormItem>
+                            </LayoutGrid>
                         </Col>
                     </Row>
                     <Row>

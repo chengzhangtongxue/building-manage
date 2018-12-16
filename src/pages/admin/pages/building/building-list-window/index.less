@@ -1,44 +1,44 @@
 @import '../../../../../less/common.less';
 .building-list-window {
     height: 100%;
-    .window-head {
-        position: relative;
-        height: 60px;
-        border-bottom: 2px solid @font-color-active;
-        clear: both;
-        .h-left {
-            float: left;
-            width: 200px;
-            height: 58px;
-        }
-        .h-center {
-            height: 58px;
-            padding: 0 300px 0 200px;
-            background:yellow;
-        }
-        .h-right {
-            position: absolute;
-            right:0;
-            top:0;
-            text-align: right;
-            float: right;
-            width: 300px;
-            height: 58px;
-            .oper {
-                display: inline-block;
-                cursor: pointer;
-                height: 30px;
-                line-height: 30px;
-                padding: 0 10px;
-                background: blue;
-                font-size: 14px;
-                margin-right: 20px;
-                .icon-oper {
-                    margin-right: 6px;
-                }
-            }
-        }
-    }
+    // .window-head {
+    //     position: relative;
+    //     height: 60px;
+    //     border-bottom: 2px solid @font-color-active;
+    //     clear: both;
+    //     .h-left {
+    //         float: left;
+    //         width: 200px;
+    //         height: 58px;
+    //     }
+    //     .h-center {
+    //         height: 58px;
+    //         padding: 0 300px 0 200px;
+    //         background:yellow;
+    //     }
+    //     .h-right {
+    //         position: absolute;
+    //         right:0;
+    //         top:0;
+    //         text-align: right;
+    //         float: right;
+    //         width: 300px;
+    //         height: 58px;
+    //         .oper {
+    //             display: inline-block;
+    //             cursor: pointer;
+    //             height: 30px;
+    //             line-height: 30px;
+    //             padding: 0 10px;
+    //             background: blue;
+    //             font-size: 14px;
+    //             margin-right: 20px;
+    //             .icon-oper {
+    //                 margin-right: 6px;
+    //             }
+    //         }
+    //     }
+    // }
     .window-content {
         height: calc(~'100% - 120px');
         .floor-list {
@@ -103,6 +103,36 @@
                     
                 }
             }
+        }
+    }
+    .select-gallery {
+        position: absolute; 
+        left: 180px;
+        right: 360px; 
+        top: 0px;
+        height: 60px;
+        line-height: 60px;
+        display: flex;
+        align-items: center;
+        .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+            border:1px solid #e8e8e8;
+            border-radius: 4px;
+            padding: 0 36px;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 6px;
+        }
+        .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-nav-container {
+            height: 30px;
+            border: 0;
+        }
+        .ant-tabs-bar {
+            border-bottom:0;
+            margin-bottom:1px;
+        }
+        .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+            border: 1px solid @font-color-active;
+            color: @font-color-active;
         }
     }
 }
